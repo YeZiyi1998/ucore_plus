@@ -94,6 +94,7 @@ $(CONFIG_SCRIPT): $(DEFCONFIG_SCRIPT) | $(CONFIG_DIR)
 	@cp $(CONFIG_DEFCONFIG) $(CONFIG_SCRIPT);
 
 $(DEFCONFIG_SCRIPT): | $(CONFIG_DIR)
+	@echo 'go in---------------------------'
 	@if [ -e $(CONFIG_DEFCONFIG) ]; then \
 		cp $(CONFIG_DEFCONFIG) $(DEFCONFIG_SCRIPT); \
 	else \
@@ -101,11 +102,14 @@ $(DEFCONFIG_SCRIPT): | $(CONFIG_DIR)
 		exit 1; \
 	fi
 
+
 defconfig: $(DEFCONFIG_SCRIPT) $(CONFIG)/conf | $(CONFIG_DIR)
 	@rm -f $(KCONFIG_AUTOCONFIG) $(KCONFIG_AUTOHEADER)
 	@cp $(DEFCONFIG_SCRIPT) $(CONFIG_SCRIPT)
 	@$(CONFIG)/conf -D $(CONFIG_SCRIPT) $(CONFIG_CONFIG_IN)
-
+	@echo "------------------------------"
+	@echo "$(CONFIG_SCRIPT)"
+	@echo "$(DEFCONFIG_SCRIPT)"
 $(CONFIG)/conf:
 	$(MAKE) CC="$(HOSTCC)" -C $(CONFIG) conf
 

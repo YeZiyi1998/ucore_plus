@@ -53,7 +53,7 @@ void __noreturn kern_init(void)
   //panic("Stop here!");
   network_init();
   //Note: This only works in a modified qemu!
-  dm9000_initialize();
+//   dm9000_initialize();
 	ide_init();
   proc_init();		// init process table
   ptrace_init();

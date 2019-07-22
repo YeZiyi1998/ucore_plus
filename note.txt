@@ -1,0 +1,7 @@
+make ARCH=mips BOARD=qemu defconfig
+make sfsimg
+make
+
+make ARCH=mips BOARD=thinpad defconfig
+make sfsimg
+make
