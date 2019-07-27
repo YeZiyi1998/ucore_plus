@@ -163,8 +163,12 @@ endif
 	-cp -r $(TOPDIR)/src/user-ucore/_initial/* $(TMPSFS)
 	@rm -f $@
 	@dd if=/dev/zero of=$@ bs=1048576 count=$(UCONFIG_SFS_IMAGE_SIZE) >/dev/null 2>&1
+	@rm $(TMPSFS)/tt
+	@rm -rf $(TMPSFS)/minigui
+	@rm -rf $(TMPSFS)/res
+	@rm -rf $(TMPSFS)/testdir
 	@$(TOOLS_MKSFS) $@ $(TMPSFS)
-	@rm -rf $(TMPSFS)
+	# @rm -rf $(TMPSFS)
 
 endif
 
