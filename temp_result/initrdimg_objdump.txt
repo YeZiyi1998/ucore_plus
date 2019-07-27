@@ -1,0 +1,3 @@
+
+initrd.img.o:     file format elf32-tradlittlemips
+
