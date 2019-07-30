@@ -85,6 +85,7 @@ static void
 printnum(void (*putch) (int, void *, int), int fd, void *putdat,
 	 unsigned int num, unsigned int base, int width, int padc)
 {
+	// kprintf('print num in mips');
 	while (1) ;
 	unsigned int result = num;
 	unsigned int mod = 0;

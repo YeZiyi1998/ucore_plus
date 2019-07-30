@@ -128,6 +128,7 @@ static inline int get_error_code(int write, pte_t * pte)
 static int
 pgfault_handler(struct trapframe *tf, uint32_t addr, uint32_t error_code)
 {
+	// kprintf('trap in mips');
 #if 0
 	extern struct mm_struct *check_mm_struct;
 	if (check_mm_struct != NULL) {
@@ -163,7 +164,11 @@ static void handle_tlbmiss(struct trapframe *tf, int write, int perm)
 		while (1) ;
 	}
 #endif
-
+	// kprintf('handle_tlbmiss: ');
+	// print_trapframe(tf);
+	// while(1){
+		
+	// }
 	static int entercnt = 0;
 	entercnt++;
 	//kprintf("## enter handle_tlbmiss %d times\n", entercnt);

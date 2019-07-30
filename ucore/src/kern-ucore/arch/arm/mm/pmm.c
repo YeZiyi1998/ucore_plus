@@ -263,6 +263,7 @@ static void *boot_alloc_page(void)
 //         - check the correctness of pmm & paging mechanism, print PDT&PT
 void pmm_init(void)
 {
+
 	//We need to alloc/free the physical memory (granularity is 4KB or other size). 
 	//So a framework of physical memory manager (struct pmm_manager)is defined in pmm.h
 	//First we should init a physical memory manager(pmm) based on the framework.

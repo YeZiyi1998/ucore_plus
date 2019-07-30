@@ -373,6 +373,7 @@ void mm_destroy(struct mm_struct *mm)
 //          - now just call check_vmm to check correctness of vmm
 void vmm_init(void)
 {
+	// kprintf('vmm init in all field!');
 	check_vmm();
 }
 

@@ -312,6 +312,8 @@ boot_map_segment(pde_t * pgdir, uintptr_t la, size_t size, uintptr_t pa,
 //         - check the correctness of pmm & paging mechanism, print PDT&PT
 void pmm_init(void)
 {
+	kprintf('pmm_init in i386\n');
+
 	//We need to alloc/free the physical memory (granularity is 4KB or other size). 
 	//So a framework of physical memory manager (struct pmm_manager)is defined in pmm.h
 	//First we should init a physical memory manager(pmm) based on the framework.

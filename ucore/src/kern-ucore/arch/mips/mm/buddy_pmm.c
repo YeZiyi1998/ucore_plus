@@ -43,11 +43,17 @@ NULL}};
 //buddy_init - init the free_list(0 ~ MAX_ORDER) & reset nr_free(0 ~ MAX_ORDER)
 static void buddy_init(void)
 {
+	// char* message= "buddy init!\n";
+	// kprintf(message);
 	int i;
 	for (i = 0; i <= MAX_ORDER; i++) {
+		// message = "buddy go %d";
+		// kprintf(message,i);
 		list_init(&free_list(i));
 		nr_free(i) = 0;
 	}
+	// message= "buddy init done!\n";
+	// kprintf(message);
 }
 
 //buddy_init_memmap - build free_list for Page base follow  n continuous pages.
@@ -318,7 +324,7 @@ static void buddy_check(void)
 
 //the buddy system pmm
 const struct pmm_manager buddy_pmm_manager = {
-	.name = "buddy_pmm_manager",
+	.name = "my_buddy_pmm_manager",
 	.init = buddy_init,
 	.init_memmap = buddy_init_memmap,
 	.alloc_pages = buddy_alloc_pages,

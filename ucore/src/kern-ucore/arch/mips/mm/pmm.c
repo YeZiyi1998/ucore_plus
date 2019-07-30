@@ -45,6 +45,10 @@ static void init_pmm_manager(void)
 	kprintf(pmm_manager->name);
 	kprintf("\n");
 	pmm_manager->init();
+
+	// char * message = "\npmm_manager init done";
+	// kprintf(message);
+	
 }
 
 //init_memmap - call pmm->init_memmap to build Page struct for free memory  
@@ -95,6 +99,8 @@ size_t nr_free_pages(void)
 static void page_init(void)
 {
 	uint32_t maxpa;
+	char* message = "page init!";
+	kprintf(message);
 	int i;
 
 	//panic("unimpl");
@@ -171,13 +177,18 @@ static void *boot_alloc_page(void)
 //         - check the correctness of pmm & paging mechanism, print PDT&PT
 void pmm_init(void)
 {
+	// char *message = "pmm_init in mips!\n\n";
+	// kprintf(message);
+	// kprintf('pmm_init in mips!\n');
+
 	//We need to alloc/free the physical memory (granularity is 4KB or other size). 
 	//So a framework of physical memory manager (struct pmm_manager)is defined in pmm.h
 	//First we should init a physical memory manager(pmm) based on the framework.
 	//Then pmm can alloc/free the physical memory. 
 	//Now the first_fit/best_fit/worst_fit/buddy_system pmm are available.
 	init_pmm_manager();
-
+	// message = "init_pmm_manager done!\n";
+	// kprintf(message);
 	// detect physical memory space, reserve already used memory,
 	// then use pmm->init_memmap to create free page list
 	page_init();
@@ -190,7 +201,7 @@ void pmm_init(void)
 	memset(boot_pgdir, 0, PGSIZE);
 	boot_cr3 = PADDR(boot_pgdir);
 	current_pgdir = boot_pgdir;
-
+	// kprintf('current_pgdir: %d\n',current_pgdir);
 	check_pgdir();
 
 	enable_paging();
@@ -230,7 +241,7 @@ extern int swap_init_ok;
 static void check_alloc_page(void)
 {
 	pmm_manager->check();
-	kprintf("check_alloc_page() succeeded!\n");
+	kprintf("check_alloc_page() succeeded!!\n");
 }
 
 static void check_pgdir(void)

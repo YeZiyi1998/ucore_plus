@@ -6,6 +6,11 @@ make
 make ARCH=mips BOARD=thinpad defconfig
 make sfsimg
 make
+dd if=/dev/zero of=XX count=8192
+dd if=obj/kernel/ucore-kernel-initrd of=XX conv=notrunc
+
+mips-sde-elf-objdump -d XX > objdump_xx.txt
+mips-sde-elf-objdump -S obj/kernel/kernel-builtin.o > objdump_S.txt
 
 800df454
 100000 00000 01101 1111 0100 0101 0100
@@ -24,3 +29,9 @@ make
 
 000101 00100 00000 0000 0000 0000 0010
 000100 00000 00000 0000 0000 0000 0011
+
+100011 11110 00100 0000 0000 010110 00
+
+000000 00101 00100 00 0000 0000 011011
+
+000000 00100 00010

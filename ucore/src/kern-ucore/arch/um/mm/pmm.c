@@ -436,6 +436,7 @@ void print_pgdir(int (*printf) (const char *fmt, ...))
  */
 void pmm_init(void)
 {
+
 	check_vpm();
 
 	init_pmm_manager();

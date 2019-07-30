@@ -164,6 +164,7 @@ static void enable_paging(void)
 //         - check the correctness of pmm & paging mechanism, print PDT&PT
 void pmm_init(void)
 {
+
 	init_pmm_manager();
 	page_init();
 

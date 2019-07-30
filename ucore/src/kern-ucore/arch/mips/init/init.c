@@ -25,7 +25,7 @@ void __noreturn kern_init(void)
 {
 	//setup_exception_vector();
 	tlb_invalidate_all();
-	char *p = 0x7ffff000;
+	// char *p = 0x7ffff000;
 
 	mp_init();
 	pic_init();		// init interrupt controller
@@ -43,7 +43,6 @@ void __noreturn kern_init(void)
 	__asm__ volatile ("syscall");
 	kprintf("EX RET\n");
 #endif
-
 	pmm_init();		// init physical memory management
 
 	vmm_init();		// init virtual memory management
@@ -57,7 +56,9 @@ void __noreturn kern_init(void)
 	ide_init();
   proc_init();		// init process table
   ptrace_init();
+	
 	fs_init();
+
 	intr_enable();		// enable irq interrupt
 	//*(int*)(0x00124) = 0x432;
 	//asm volatile("divu $1, $1, $1");
